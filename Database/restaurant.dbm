@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.1" last-position="82,0" last-zoom="0.75"
+	 default-schema="public" default-owner="postgres">
+<database name="restaurant" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" rect-visible="true" fill-color="#29ef99" sql-disabled="true" faded-out="true">
+</schema>
+
+<table name="customer">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="840" y="800"/>
+	<column name="Customer_id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="FirstName" not-null="true">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="LastName" not-null="true">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="PhoneNo" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="address">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="customer_pk" type="pk-constr" table="public.customer">
+		<columns names="Customer_id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[Customer_id•FirstName•LastName•PhoneNo•address⸣
+10001•Ali•Mirzae•021338899•Tehran,Folanja⸣
+10002•Mahdi•Karami•021778899•Tehran,Folanja⸣
+10003•Hamed•Shahi•09128989001•Tehran,Folanja⸣
+10004•Saba•Rad•09367788890•Tehran,Folanja⸣
+10005•Vahid•Rahimi•021889900•Tehran,Folanja⸣
+10006•Nima•Falahzade•0921556677•Tehran,Folanja]]>
+	</initial-data>
+</table>
+
+<table name="Restaurant">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="760" y="280"/>
+	<column name="Restaurant_ID" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="Name" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="address" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="ContactNo" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<constraint name="Restaurant_pk" type="pk-constr" table="public.&quot;Restaurant&quot;">
+		<columns names="Restaurant_ID" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[Restaurant_ID•Name•address•ContactNo⸣
+1•shandiz•Tehran,Province, Jordan، District 3, Saba Boulevard•021 2205 4848]]>
+	</initial-data>
+</table>
+
+<table name="Staff">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="860" y="540"/>
+	<column name="Staff_Id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="phoneNo" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="Name" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="address" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="Sallery" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="age" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="shift" not-null="true">
+		<type name="varchar" length="10"/>
+	</column>
+	<constraint name="Staff_pk" type="pk-constr" table="public.&quot;Staff&quot;">
+		<columns names="Staff_Id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Menu">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1240" y="420"/>
+	<column name="Menu_ID" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="name" not-null="true">
+		<type name="varchar" length="50"/>
+	</column>
+	<constraint name="Menu_pk" type="pk-constr" table="public.&quot;Menu&quot;">
+		<columns names="Menu_ID" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[Menu_ID•name⸣
+1•menu_1]]>
+	</initial-data>
+</table>
+
+<table name="Order">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1260" y="660"/>
+	<column name="Order_Id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="Customer_Id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="Menu_Id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="Order_date" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="order_Time" not-null="true">
+		<type name="time" length="0"/>
+	</column>
+	<column name="OrderStatus" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="TotalPrice" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="Order_pk" type="pk-constr" table="public.&quot;Order&quot;">
+		<columns names="Order_Id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[Order_Id•Customer_Id•Order_date•order_Time•OrderStatus•TotalPrice•Menu_Id⸣
+1•10001•2020-02-01•10:00:00•Ready•12000000•1⸣
+2•10002•2020-09-02•12:00:00•checking•40000000•1⸣
+3•10003•2020-03-02•14:00:00•preparing•13000000•1⸣
+4•10004•2020-04-02•15:00:00•cancelled•600000000•1⸣
+5•10005•2020-09-02•13:00:00•delivering•1300000•1]]>
+	</initial-data>
+</table>
+
+<table name="Manager" rls-forced="true">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="260" y="320"/>
+	<column name="Manager_ID" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="name" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="lastName" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="Manager_pk" type="pk-constr" table="public.&quot;Manager&quot;">
+		<columns names="Manager_ID" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[Manager_ID•name•lastName⸣
+1•Hasan•Tavakoli]]>
+	</initial-data>
+</table>
+
+<table name="Supplier">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="260" y="140"/>
+	<column name="SupplierID" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="SupplierName" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="ContactNo" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="address" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="Supplier_pk" type="pk-constr" table="public.&quot;Supplier&quot;">
+		<columns names="SupplierID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="MenuGroup">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1140" y="180"/>
+	<column name="Group_ID" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="Menu_ID" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="GroupName" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="MenuGroup_pk" type="pk-constr" table="public.&quot;MenuGroup&quot;">
+		<columns names="Group_ID" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[Group_ID•Menu_ID•GroupName⸣
+101•1•Seafood⸣
+102•1•Vegetarian meals⸣
+103•1•Iranian foods⸣
+104•1•Appetizer⸣
+105•1•Salad⸣
+106•1•Dessert⸣
+107•1•drinks]]>
+	</initial-data>
+</table>
+
+<table name="MenuItem">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1440" y="20"/>
+	<column name="item_Id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="Group_Id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="ItemName" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="Price" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="MenuItem_pk" type="pk-constr" table="public.&quot;MenuItem&quot;">
+		<columns names="item_Id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[item_Id•Group_Id•ItemName•Price⸣
+1•101•Crab•1000000⸣
+2•101•Shrimp•2000000⸣
+3•101•Lobster•2000000⸣
+4•101•Prawn•3000000⸣
+5•101•Crayfish•5000000⸣
+6•102•Vegetable gratin•2000000⸣
+7•102•HerbiRaw•4000000⸣
+8•102•Wholesome Herbivore•9000000⸣
+9•102•The Foragers•7700000⸣
+10•102•Plant Meet•6000000⸣
+11•103•kabab•3900000⸣
+12•103•jooje kabab•10000000⸣
+13•103•gheimeh•5000000⸣
+14•103•ghormeh sabzi•4000000⸣
+15•103•chicken•6000000⸣
+16•104•French fries•10000⸣
+17•104•Special French fries•20000⸣
+18•104•preserved olive•12000⸣
+19•104•Soup of the day•180000⸣
+20•104•yogurt•10000⸣
+21•105•France Salad•300000⸣
+22•105•Caesar salad•400000⸣
+23•105•season's salad•360000⸣
+24•105•Shirazi salad•400000⸣
+25•105•Chef Salad•500000⸣
+26•106•Stylish strawberry•5500000⸣
+27•106•Chic Nescafe•4400000⸣
+28•106•Stylish chocolate•5566000⸣
+29•106•Jelly•1200000⸣
+30•106•Chic Kit Kat•1500000⸣
+31•107•Lemonade•3000000⸣
+32•107•Masala tea•3466000⸣
+33•107•Citrus aurantium•3500000⸣
+34•107•Soft drinks•400000⸣
+35•107•Dough•300000⸣
+36•107•tea•500000]]>
+	</initial-data>
+</table>
+
+<table name="Chefs">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="480"/>
+	<column name="id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+</table>
+
+<table name="Waiter">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="260" y="620"/>
+	<column name="id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+</table>
+
+<table name="Cashier">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="780"/>
+	<column name="id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+</table>
+
+<table name="Branch">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="760" y="40"/>
+	<column name="Branch_ID" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="Branch_Name" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="Branch_Number" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="Branch_pk" type="pk-constr" table="public.&quot;Branch&quot;">
+		<columns names="Branch_ID" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[Branch_ID•Branch_Name•Branch_Number⸣
+1•Shandiz_1•1]]>
+	</initial-data>
+</table>
+
+<constraint name="MenuID" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;Menu&quot;" table="public.&quot;Restaurant&quot;">
+	<columns names="Restaurant_ID" ref-type="src-columns"/>
+	<columns names="Menu_ID" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="Branch_ID" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;Branch&quot;" table="public.&quot;Restaurant&quot;">
+	<columns names="Restaurant_ID" ref-type="src-columns"/>
+	<columns names="Branch_ID" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="Restaurant_Id" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;Restaurant&quot;" table="public.&quot;Staff&quot;">
+	<columns names="Staff_Id" ref-type="src-columns"/>
+	<columns names="Restaurant_ID" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="Customer_Id" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.customer" table="public.&quot;Order&quot;">
+	<columns names="Customer_Id" ref-type="src-columns"/>
+	<columns names="Customer_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="Menu_ID" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;Menu&quot;" table="public.&quot;Order&quot;">
+	<columns names="Menu_Id" ref-type="src-columns"/>
+	<columns names="Menu_ID" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="Restaurant_ID" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;Restaurant&quot;" table="public.&quot;Manager&quot;">
+	<columns names="Manager_ID" ref-type="src-columns"/>
+	<columns names="Restaurant_ID" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="ResturantID" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;Restaurant&quot;" table="public.&quot;Supplier&quot;">
+	<columns names="SupplierID" ref-type="src-columns"/>
+	<columns names="Restaurant_ID" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="Menu_ID" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;Menu&quot;" table="public.&quot;MenuGroup&quot;">
+	<columns names="Menu_ID" ref-type="src-columns"/>
+	<columns names="Menu_ID" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="Group_Id" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;MenuGroup&quot;" table="public.&quot;MenuItem&quot;">
+	<columns names="Group_Id" ref-type="src-columns"/>
+	<columns names="Group_ID" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="StaffID" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;Staff&quot;" table="public.&quot;Chefs&quot;">
+	<columns names="id" ref-type="src-columns"/>
+	<columns names="Staff_Id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="StaffId" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;Staff&quot;" table="public.&quot;Waiter&quot;">
+	<columns names="id" ref-type="src-columns"/>
+	<columns names="Staff_Id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="staffID" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;Staff&quot;" table="public.&quot;Cashier&quot;">
+	<columns names="id" ref-type="src-columns"/>
+	<columns names="Staff_Id" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_Chefs_Staff" type="relfk"
+	 src-table="public.&quot;Chefs&quot;"
+	 dst-table="public.&quot;Staff&quot;" reference-fk="StaffID"
+	 src-required="false" dst-required="false">
+	<label ref-type="dst-label">
+		<position x="0.2425" y="-21.275"/>
+	</label>
+	<label ref-type="name-label">
+		<position x="-9.94466" y="-54.1016"/>
+	</label>
+</relationship>
+
+<relationship name="&quot;rel_Waiter_Staff&quot;" type="relfk"
+	 src-table="public.&quot;Waiter&quot;"
+	 dst-table="public.&quot;Staff&quot;" reference-fk="StaffId"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_Cashier_Staff&quot;" type="relfk"
+	 src-table="public.&quot;Cashier&quot;"
+	 dst-table="public.&quot;Staff&quot;" reference-fk="staffID"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_Restaurant_Menu" type="relfk"
+	 src-table="public.&quot;Restaurant&quot;"
+	 dst-table="public.&quot;Menu&quot;" reference-fk="MenuID"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="141.839" y="158.725"/>
+	</label>
+	<label ref-type="dst-label">
+		<position x="-139.757" y="-161.275"/>
+	</label>
+</relationship>
+
+<relationship name="&quot;rel_Supplier_Restaurant&quot;" type="relfk"
+	 src-table="public.&quot;Supplier&quot;"
+	 dst-table="public.&quot;Restaurant&quot;" reference-fk="ResturantID"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_Staff_Restaurant" type="relfk"
+	 src-table="public.&quot;Staff&quot;"
+	 dst-table="public.&quot;Restaurant&quot;" reference-fk="Restaurant_Id"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="96.4814" y="52.9959"/>
+	</label>
+</relationship>
+
+<relationship name="rel_Restaurant_Branch" type="relfk"
+	 src-table="public.&quot;Restaurant&quot;"
+	 dst-table="public.&quot;Branch&quot;" reference-fk="Branch_ID"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="21.8388" y="-241.275"/>
+	</label>
+	<label ref-type="dst-label">
+		<position x="-19.6056" y="198.725"/>
+	</label>
+</relationship>
+
+<relationship name="&quot;rel_Manager_Restaurant&quot;" type="relfk"
+	 src-table="public.&quot;Manager&quot;"
+	 dst-table="public.&quot;Restaurant&quot;" reference-fk="Restaurant_ID"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_MenuItem_MenuGroup1&quot;" type="relfk"
+	 src-table="public.&quot;MenuItem&quot;"
+	 dst-table="public.&quot;MenuGroup&quot;" reference-fk="Group_Id"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_MenuGroup_Menu&quot;" type="relfk"
+	 src-table="public.&quot;MenuGroup&quot;"
+	 dst-table="public.&quot;Menu&quot;" reference-fk="Menu_ID"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_Order_customer&quot;" type="relfk"
+	 src-table="public.&quot;Order&quot;"
+	 dst-table="public.customer" reference-fk="Customer_Id"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_Order_Menu&quot;" type="relfk"
+	 src-table="public.&quot;Order&quot;"
+	 dst-table="public.&quot;Menu&quot;" reference-fk="Menu_ID"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>
